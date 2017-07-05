@@ -45,6 +45,8 @@ dependencies {
     compile coreAndroidModule.okhttp3
 
     compile coreAndroidModule.retrofit2
+    compile coreAndroidModule.retrofit2AdapterRxJava2
+    compile coreAndroidModule.retrofit2ConverterGson
 
     compile coreAndroidModule.rxAndroid2
 
