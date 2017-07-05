@@ -1,0 +1,14 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.anotherdev.taler.core">
+
+    <application>
+
+        <!--<provider
+            android:authorities="${applicationId}.core.init.provider"
+            android:name="com.anotherdev.taler.core.content.CoreInitProvider"
+            android:initOrder="100000"
+            android:exported="false" />-->
+
+    </application>
+
+</manifest>

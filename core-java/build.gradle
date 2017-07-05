@@ -1,0 +1,18 @@
+apply plugin: 'java'
+
+dependencies {
+    def coreJavaModule = rootProject.ext.coreJavaModule
+
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+
+    compile coreJavaModule.gson
+
+    compile coreJavaModule.guava
+
+    compile coreJavaModule.jsr305
+
+    compile coreJavaModule.rxJava2
+}
+
+sourceCompatibility = "1.7"
+targetCompatibility = "1.7"

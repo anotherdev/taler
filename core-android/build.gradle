@@ -1,18 +1,18 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 
 android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdkVersion rootProject.ext.compileSdkVersion
 
     defaultConfig {
-        applicationId "com.anotherdev.taler"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-    }
 
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
     buildTypes {
         release {
             minifyEnabled false
@@ -24,7 +24,7 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 
-    compile project(':core-android')
+    compile project(':core-java')
 
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
@@ -32,5 +32,14 @@ dependencies {
     androidTestCompile coreJavaModule.jsr305
     testCompile 'junit:junit:4.12'
 
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile coreAndroidModule.androidSupportAppCompatV7
+
+    compile coreAndroidModule.glide
+    compile coreAndroidModule.glideOkhttp3
+
+    compile coreAndroidModule.okhttp3
+
+    compile coreAndroidModule.rxAndroid2
+
+    compile coreAndroidModule.timber
 }
