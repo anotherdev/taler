@@ -17,6 +17,7 @@ ext {
     jsr305Version = '3.0.2'
     okhttp3Version = '3.8.1'
     playServicesVersion = '11.0.2'
+    retrofit2Version = '2.3.0'
     rxAndroid2Version = '2.0.1'
     rxBinding2Version = '2.0.0'
     rxJava2Version = '2.1.1'
@@ -42,6 +43,8 @@ ext {
             glideOkhttp3             : "com.github.bumptech.glide:okhttp3-integration:$glideOkhttp3Version@aar",
 
             okhttp3                  : "com.squareup.okhttp3:okhttp:$okhttp3Version",
+
+            retrofit2                : "com.squareup.retrofit2:retrofit:$retrofit2Version",
 
             rxAndroid2               : "io.reactivex.rxjava2:rxandroid:$rxAndroid2Version",
 

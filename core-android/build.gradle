@@ -44,6 +44,8 @@ dependencies {
 
     compile coreAndroidModule.okhttp3
 
+    compile coreAndroidModule.retrofit2
+
     compile coreAndroidModule.rxAndroid2
 
     compile coreAndroidModule.timber
