@@ -1,2 +1,1 @@
-# taler
-Taler
+# Taler
