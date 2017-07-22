@@ -15,7 +15,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 import timber.log.Timber;
 
-public class BitcoinAverageAuthInterceptor implements Interceptor {
+class BitcoinAverageAuthInterceptor implements Interceptor {
 
     private static final String PUBLIC_KEY = "YmIyNDEzM2YwZDNlNDgwM2IzMTIzYjRkNTY4MzAyYjE";
     private static final String SECRET_KEY = "MzMzZjJhYzgzNWIxNDRlN2EwZDRlOThlZDAwNmI5MTUwZGM1ZmFjN2MzMDc0ODNiYjFkZmRiODM2NmIzNzE1YQ";
