@@ -38,6 +38,7 @@ dependencies {
     }
 
     compile coreAndroidModule.androidSupportAppCompatV7
+    compile coreAndroidModule.androidSupportDesign
 
     compile coreAndroidModule.glide
     compile coreAndroidModule.glideOkhttp3
