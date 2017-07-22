@@ -1,5 +1,6 @@
 package com.anotherdev.taler.api.bitcoinaverage;
 
+import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -11,6 +12,9 @@ public class BitcoinAverage {
     private static class ApiHolder {
         private static final BitcoinAverageApi API = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
+                .client(new OkHttpClient.Builder()
+                        .addNetworkInterceptor(new BitcoinAverageAuthInterceptor())
+                        .build())
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.createAsync())
                 .build()
