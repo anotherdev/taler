@@ -17,7 +17,7 @@ import timber.log.Timber;
 
 class BitcoinAverageAuthInterceptor implements Interceptor {
 
-    private static final String TESTING_HEADER_NAME = "X-testing";
+    private static final String TESTING_HEADER_NAME = "X-Testing";
     private static final String TESTING_HEADER_VALUE = "testing";
 
     private static final String PUBLIC_KEY = "YmIyNDEzM2YwZDNlNDgwM2IzMTIzYjRkNTY4MzAyYjE";
