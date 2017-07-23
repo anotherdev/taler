@@ -1,9 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.percent.PercentRelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.anotherdev.taler.app.HomeActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/history_recyclerview"
+        app:layout_heightPercent="75%"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"/>
+    
+    <RelativeLayout
+        android:orientation="vertical"
+        app:layout_widthPercent="100%"
+        android:layout_above="@id/history_recyclerview"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/ticker_timestamp_textview"
+            android:textColor="@android:color/black"
+            android:gravity="center"
+            android:layout_alignParentTop="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="1970.01.01 00:00:01"/>
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/ticker_last_textview"
+            android:text="0.0"
+            android:textSize="64sp"
+            android:textColor="@android:color/black"
+            android:gravity="center"
+            android:layout_centerInParent="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
+
+</android.support.percent.PercentRelativeLayout>
