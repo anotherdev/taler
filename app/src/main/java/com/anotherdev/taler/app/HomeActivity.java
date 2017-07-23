@@ -130,7 +130,7 @@ public class HomeActivity extends TalerActivity {
                 .subscribeWith(new BaseObserver<List<HistoricalData>>() {
                     @Override
                     public void onNext(List<HistoricalData> data) {
-                        adapter.addAll(data);
+                        adapter.addAll(data.subList(0,3));
                     }
                 });
     }
