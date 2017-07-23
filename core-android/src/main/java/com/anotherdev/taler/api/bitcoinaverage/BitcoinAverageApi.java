@@ -1,9 +1,12 @@
 package com.anotherdev.taler.api.bitcoinaverage;
 
 import com.anotherdev.taler.api.bitcoinaverage.model.Fiats;
+import com.anotherdev.taler.api.bitcoinaverage.model.HistoricalData;
 import com.anotherdev.taler.api.bitcoinaverage.model.Symbols;
 import com.anotherdev.taler.api.bitcoinaverage.model.TickerData;
 import com.google.gson.JsonObject;
+
+import java.util.List;
 
 import io.reactivex.Single;
 import retrofit2.http.GET;
@@ -34,4 +37,11 @@ public interface BitcoinAverageApi {
     @Headers(AUTH_HEADER)
     @GET("indices/global/ticker/{symbol}")
     Single<TickerData> getTicker(@Path("symbol") String symbol);
+
+    @GET("indices/global/history/{symbol}?period=daily&format=json")
+    Single<List<HistoricalData>> getHistoryDaily(@Path("symbol") String symbol);
+
+    @Headers(AUTH_HEADER)
+    @GET("indices/global/history/{symbol}")
+    Single<List<HistoricalData>> getHistorySince(@Path("symbol") String symbol, @Query("since") long timestamp);
 }
