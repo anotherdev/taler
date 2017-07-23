@@ -2,6 +2,7 @@ package com.anotherdev.taler.api.bitcoinaverage;
 
 import com.anotherdev.taler.api.bitcoinaverage.model.Fiats;
 import com.anotherdev.taler.api.bitcoinaverage.model.Symbols;
+import com.anotherdev.taler.api.bitcoinaverage.model.TickerData;
 import com.google.gson.JsonObject;
 
 import io.reactivex.Single;
@@ -24,13 +25,13 @@ public interface BitcoinAverageApi {
 
     @Headers(AUTH_HEADER)
     @GET("indices/global/ticker/all")
-    Single<JsonObject> getTicker(@Query("crypto") String crypto, @Query("fiat") Fiats fiats);
+    Single<TickerData> getTicker(@Query("crypto") String crypto, @Query("fiat") Fiats fiats);
 
     @Headers(AUTH_HEADER)
     @GET("indices/global/ticker/{crypto}{fiat}")
-    Single<JsonObject> getTicker(@Path("crypto") String crypto, @Path("fiat") String fiat);
+    Single<TickerData> getTicker(@Path("crypto") String crypto, @Path("fiat") String fiat);
 
     @Headers(AUTH_HEADER)
     @GET("indices/global/ticker/{symbol}")
-    Single<JsonObject> getTicker(@Path("symbol") String symbol);
+    Single<TickerData> getTicker(@Path("symbol") String symbol);
 }
