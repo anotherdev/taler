@@ -15,7 +15,6 @@ public interface BitcoinAverageApi {
     String AUTH_HEADER_NAME = "X-Signature";
     String AUTH_HEADER = AUTH_HEADER_NAME + ": %s";
 
-    String TESTING_HEADER = "X-testing: testing";
 
     @GET("constants/time")
     Single<JsonObject> getTime();
@@ -23,10 +22,15 @@ public interface BitcoinAverageApi {
     @GET("constants/symbols/global")
     Single<Symbols> getSymbols();
 
-    @Headers(TESTING_HEADER)
+    @Headers(AUTH_HEADER)
     @GET("indices/global/ticker/all")
     Single<JsonObject> getTicker(@Query("crypto") String crypto, @Query("fiat") Fiats fiats);
 
+    @Headers(AUTH_HEADER)
     @GET("indices/global/ticker/{crypto}{fiat}")
     Single<JsonObject> getTicker(@Path("crypto") String crypto, @Path("fiat") String fiat);
+
+    @Headers(AUTH_HEADER)
+    @GET("indices/global/ticker/{symbol}")
+    Single<JsonObject> getTicker(@Path("symbol") String symbol);
 }

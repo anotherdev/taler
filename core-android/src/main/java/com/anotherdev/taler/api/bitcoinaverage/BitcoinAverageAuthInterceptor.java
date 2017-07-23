@@ -17,6 +17,9 @@ import timber.log.Timber;
 
 class BitcoinAverageAuthInterceptor implements Interceptor {
 
+    private static final String TESTING_HEADER_NAME = "X-testing";
+    private static final String TESTING_HEADER_VALUE = "testing";
+
     private static final String PUBLIC_KEY = "YmIyNDEzM2YwZDNlNDgwM2IzMTIzYjRkNTY4MzAyYjE";
     private static final String SECRET_KEY = "MzMzZjJhYzgzNWIxNDRlN2EwZDRlOThlZDAwNmI5MTUwZGM1ZmFjN2MzMDc0ODNiYjFkZmRiODM2NmIzNzE1YQ";
 
@@ -43,13 +46,15 @@ class BitcoinAverageAuthInterceptor implements Interceptor {
     @Override
     public Response intercept(@NonNull Chain chain) throws IOException {
         Request request = chain.request();
+        Request.Builder builder = request.newBuilder()
+                .header(TESTING_HEADER_NAME, TESTING_HEADER_VALUE);
 
         final String authHeader = request.header(BitcoinAverageApi.AUTH_HEADER_NAME);
         if (!TextUtils.isEmpty(authHeader)) {
-            request = request.newBuilder()
-                    .header(BitcoinAverageApi.AUTH_HEADER_NAME, getSignature())
-                    .build();
+            builder.header(BitcoinAverageApi.AUTH_HEADER_NAME, getSignature());
         }
+
+        request = builder.build();
 
         Timber.i("taler: request: %s", request);
         Timber.i("taler: headers:\n%s", request.headers());
