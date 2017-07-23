@@ -41,6 +41,9 @@ dependencies {
     compile coreAndroidModule.androidSupportDesign
     compile coreAndroidModule.androidSupportPercent
 
+    compile coreAndroidModule.butterKnife
+    annotationProcessor coreAndroidModule.butterKnifeCompiler
+
     compile coreAndroidModule.glide
     compile coreAndroidModule.glideOkhttp3
 
