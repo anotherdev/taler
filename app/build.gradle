@@ -54,4 +54,6 @@ dependencies {
 
     compile appModule.butterKnife
     annotationProcessor appModule.butterKnifeCompiler
+
+    compile appModule.renderers
 }
