@@ -1,11 +1,10 @@
 package com.anotherdev.taler.common.rx;
 
 import io.reactivex.Observer;
-import io.reactivex.annotations.NonNull;
-import io.reactivex.disposables.Disposable;
+import io.reactivex.observers.DisposableObserver;
 import timber.log.Timber;
 
-public class BaseObserver<T> implements Observer<T> {
+public class BaseObserver<T> extends DisposableObserver<T> {
 
     private static final Observer<Object> EMPTY = new BaseObserver<>();
 
@@ -15,10 +14,6 @@ public class BaseObserver<T> implements Observer<T> {
         return (Observer<T>) EMPTY;
     }
 
-
-    @Override
-    public void onSubscribe(@NonNull Disposable d) {
-    }
 
     @Override
     public void onNext(T t) {
