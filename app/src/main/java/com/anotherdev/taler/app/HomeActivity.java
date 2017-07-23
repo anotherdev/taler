@@ -1,6 +1,7 @@
 package com.anotherdev.taler.app;
 
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
 
@@ -10,10 +11,11 @@ import com.anotherdev.taler.api.bitcoinaverage.model.HistoricalData;
 import com.anotherdev.taler.api.bitcoinaverage.model.TickerData;
 import com.anotherdev.taler.common.rx.BaseObserver;
 import com.anotherdev.taler.common.rx.Observables;
-import com.google.common.collect.Sets;
+import com.anotherdev.taler.view.HistoricalDataRenderer;
+import com.anotherdev.taler.view.HistoricalDataRendererAdapter;
+import com.pedrogomez.renderers.RendererBuilder;
 
 import java.util.List;
-import java.util.TreeSet;
 import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
@@ -41,7 +43,7 @@ public class HomeActivity extends TalerActivity {
     private CompositeDisposable tickerDisposable = new CompositeDisposable();
     private CompositeDisposable historyDisposable = new CompositeDisposable();
 
-    private TreeSet<HistoricalData> history = Sets.newTreeSet();
+    private HistoricalDataRendererAdapter adapter;
 
 
     @Override
@@ -51,6 +53,12 @@ public class HomeActivity extends TalerActivity {
         ButterKnife.bind(this);
 
         setTitle(SYMBOL);
+
+        HistoricalDataRenderer renderer = new HistoricalDataRenderer();
+        RendererBuilder<HistoricalData> builder = new RendererBuilder<>(renderer);
+        adapter = new HistoricalDataRendererAdapter(builder);
+        historyRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        historyRecyclerView.setAdapter(adapter);
     }
 
     @Override
@@ -122,7 +130,7 @@ public class HomeActivity extends TalerActivity {
                 .subscribeWith(new BaseObserver<List<HistoricalData>>() {
                     @Override
                     public void onNext(List<HistoricalData> data) {
-                        history.addAll(data);
+                        adapter.addAll(data);
                     }
                 });
     }

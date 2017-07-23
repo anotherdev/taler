@@ -38,6 +38,7 @@ public interface BitcoinAverageApi {
     @GET("indices/global/ticker/{symbol}")
     Single<TickerData> getTicker(@Path("symbol") String symbol);
 
+    @Headers(AUTH_HEADER)
     @GET("indices/global/history/{symbol}?period=daily&format=json")
     Single<List<HistoricalData>> getHistoryDaily(@Path("symbol") String symbol);
 
