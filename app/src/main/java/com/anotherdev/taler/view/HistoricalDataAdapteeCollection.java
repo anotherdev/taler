@@ -45,7 +45,6 @@ class HistoricalDataAdapteeCollection implements AdapteeCollection<HistoricalDat
 
     @Override
     public boolean addAll(Collection<? extends HistoricalData> histories) {
-        Timber.e("taler: addAll: %s", histories);
         for (HistoricalData h : histories) {
             add(h);
         }
