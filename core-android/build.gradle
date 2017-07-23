@@ -39,6 +39,7 @@ dependencies {
 
     compile coreAndroidModule.androidSupportAppCompatV7
     compile coreAndroidModule.androidSupportDesign
+    compile coreAndroidModule.androidSupportPercent
 
     compile coreAndroidModule.glide
     compile coreAndroidModule.glideOkhttp3
